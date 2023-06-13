@@ -7,7 +7,6 @@ Roberto J. Herrera y del Valle
 import pyodbc
 import pandas as pd
 import sqlalchemy
-import pyodbc
 #%%Local Driver Condition
 cnxn_str = ("Driver={SQL Server};"
             "Server=DESKTOP-64QH8U8;"
