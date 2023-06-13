@@ -54,4 +54,4 @@ df = pd.DataFrame(data)
 print(df)
 
 #We send it to the SQLServer
-df.to_sql('MotelSalt', con = myeng)
+df.to_sql('MoltenSalt', con = myeng)
