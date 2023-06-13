@@ -6,6 +6,8 @@ Roberto J. Herrera y del Valle
 #%% We import our library for connecting Python to SQL
 import pyodbc
 import pandas as pd
+import sqlalchemy
+import pyodbc
 #%%Local Driver Condition
 cnxn_str = ("Driver={SQL Server};"
             "Server=DESKTOP-64QH8U8;"
@@ -21,10 +23,7 @@ cursor.close()
 data = pd.read_sql("SELECT TOP(100) * FROM data WHERE ZT >0.5", cnxn)
 
 #%%AWS SQL Server Calling
-import pyodbc
-import pandas as pd
-import sqlalchemy
-import pyodbc
+
 #%%We create our connection conditions
 #These are the strings that can be used to authenticate access to the AWS RDS instance
 
