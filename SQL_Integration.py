@@ -20,9 +20,6 @@ cursor.execute("SELECT TOP(100) * FROM data")
 cursor.close()
 "We actually place it in our enviroment"
 data = pd.read_sql("SELECT TOP(100) * FROM data WHERE ZT >0.5", cnxn)
-
-#%%AWS SQL Server Calling
-
 #%%We create our connection conditions
 #These are the strings that can be used to authenticate access to the AWS RDS instance
 
