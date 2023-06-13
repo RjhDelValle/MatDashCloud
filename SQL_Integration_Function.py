@@ -19,7 +19,7 @@ def SQLCall(x):
         df = pd.read_sql("SELECT * FROM " + x, cnxn)
         return df
 
-x=SQLCall("AM_BismuthTelluride_Data")
+x=SQLCall("<Name of datatable in SQL Server>")
 
 #%% Function for calling importinh databases from our AWS SQL server
 def SQLSend(df,name):
@@ -32,4 +32,4 @@ def SQLSend(df,name):
     myeng = sqlalchemy.create_engine("mssql+pyodbc:///?odbc_connect=%s" % db)
     df.to_sql(str(name), con = myeng)   
        
-SQLSend(data, "MoltenSalt")
+SQLSend(<data>, "<NameforTable>")
