@@ -73,31 +73,37 @@ fig.update_layout(
 fig.show(renderer="png")
 #%%
 #We create a function for this
-def spider_chart(threshold_df,*target_df,long=[0.5,0.75,1],
+def spider_chart(threshold_df,*target_df,long=[0.5,0.8,1],
                  categories=["Underperfoming", "Satisfactory","Overperfoming"]):
-    fig = go.Figure()
+    #threshold_df=threshold_df.append(threshold_df.iloc[0])
+    #target_df=target_df.append(target_df.iloc[0])
     threshold=threshold_df["value"]
+    fig = go.Figure()
     count=0
     for i in long:
         percent= [i]*len(threshold)
         fig.add_trace(go.Scatterpolar(
           r=percent,theta=threshold_df["sample"],
           fill='none',
+          mode = 'lines',
+          line_color='black',
           name=categories[count])
             )
         count +=1
     count=0
     for target in target_df:
-        count +=1
         fig.add_trace(go.Scatterpolar(
               r=target["value"]/threshold[count],theta=target["sample"],
               fill='toself',
               name=f'Sample {count}'))
+        count +=1
     fig.update_layout(
       polar=dict(
         radialaxis=dict(
           visible=True,
-        ))),
+        )),font=dict(
+            size=15,
+            color="black")),
     fig.show(renderer="png")
 #%%
 #We test out the function 
