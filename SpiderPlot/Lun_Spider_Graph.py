@@ -28,14 +28,13 @@ def spider_chart(threshold_df,target_dfs=[],performance_threshold=[],
         count +=1
     threshold_df=threshold_df[:-1]
     threshold=threshold_df["value"]
-    for target in target_dfs:
+    for i,target in enumerate(target_dfs):
        count=0
-       name=(f'Sample {count+1}')
        count +=1
        fig.add_trace(go.Scatterpolar(
            r=target.loc[:,"value"]/threshold[count-1],theta=target.loc[:,"sample"],
            fill='toself',
-           name=name))
+           name=f'Sample {i + 1}'))
     fig.update_layout(
       polar=dict(
         radialaxis=dict(
