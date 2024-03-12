@@ -38,7 +38,7 @@ def spider_chart(threshold_df,target_dfs=[],performance_threshold=[],
        fig.add_trace(go.Scatterpolar(
            r=target.loc[:,"value"]/threshold[count],theta=target.loc[:,"sample"],
            fill='toself',
-           name=f'Sample {count + 1}'))
+           name=f'Sample {i + 1}'))
        count +=1
     #This formats the chart itself, like font color and size
     fig.update_layout(
