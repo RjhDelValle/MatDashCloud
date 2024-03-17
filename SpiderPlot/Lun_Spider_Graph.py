@@ -20,12 +20,14 @@ def spider_chart(threshold_df,target_dfs=[],performance_threshold=[],
     x=len(threshold_df)
     for i in performance_threshold:
         #We create a table where we have the percentage threshold value repeated x times
+        #The threshold lines are dashed
         percent= [i]*x
         fig.add_trace(go.Scatterpolar(
           r=percent,theta=threshold_df["sample"],
           fill='none',
           mode = 'lines',
           #line_color='black',
+          line_dash="dash",
           name=categories[count])
             )
         count +=1
@@ -35,6 +37,7 @@ def spider_chart(threshold_df,target_dfs=[],performance_threshold=[],
     # insider target_dfs and target for the actual values of the row
     for i,target in enumerate(target_dfs):
        count=0
+       #We divide the target values with the threshold value to find the percentaged
        fig.add_trace(go.Scatterpolar(
            r=target.loc[:,"value"]/threshold[count],theta=target.loc[:,"sample"],
            fill='toself',
@@ -44,7 +47,7 @@ def spider_chart(threshold_df,target_dfs=[],performance_threshold=[],
     fig.update_layout(
       polar=dict(
         radialaxis=dict(
-          visible=True,
+          visible=False,
         )),font=dict(
             size=17,
             color="black")),
@@ -62,4 +65,4 @@ target1_df = pd.DataFrame(dict(
     value=[8, 1, 4, 5, 8],
     sample=['Roberto','Lun','Ryan','Ankita','Celina']))
 #We test out the function 
-spider_chart(threshold_df,[target_df,target1_df],performance_threshold=[0.5,0.75,1])
+spider_chart(threshold_df,[target_df,target1_df],performance_threshold=[0.5,1,1.25])
