@@ -3,7 +3,6 @@ Lun Spider Graph Version 2
 Roberto J. Herrera
 """
 #We import our libraries
-#%%We import out packages first
 #import plotly.graph_objects as go
 import plotly.graph_objects as go
 import pandas as pd
